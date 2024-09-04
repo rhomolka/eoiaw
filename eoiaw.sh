@@ -3,10 +3,13 @@
 MAINDIR=$HOME/.eoiaw
 if [ ! -d $MAINDIR ]
 then
-    mkdir -p $MAINDIR $MAINDIR/rundirs/24hours.d $MAINDIR/var/touchfiles
+    mkdir -p $MAINDIR/{rundirs/24hours.d,var/touchfiles} || exit 1
     echo "Created Main dir $MAINDIR"
     exit
 fi
+
+VARDIR=$MAINDIR/var
+mkdir -p $VARDIR/touchfiles
 
 LOCKDIR=$MAINDIR/var/lockdir
 # use directory to run only once instance
